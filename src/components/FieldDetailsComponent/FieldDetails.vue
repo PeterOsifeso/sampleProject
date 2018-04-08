@@ -10,7 +10,8 @@ export default {
   name: 'FieldDetails',
   data () {
     return {
-      selectedTagGroup: []
+      selectedTagGroup: [],
+      customValidation: null
     }
   },
   props: ['fields', 'fieldGroups'],
@@ -20,13 +21,14 @@ export default {
   },
   computed: {
     checkRegex: function () {
-      if (this.fields.customValidation && this.fields.customValidation.length === 0) {
+      if (this.customValidation === null || this.customValidation.length === 0) {
         return null
       }
       try {
-        let testReg = new RegExp(this.fields.customValidation)
+        let testReg = new RegExp(this.customValidation)
         // to pass linting
         testReg.test('123')
+        this.setFieldCustomValidation()
         return true
       } catch (e) {
         return false
@@ -41,6 +43,9 @@ export default {
     }
   },
   methods: {
+    setFieldCustomValidation: function () {
+      this.fields.customValidation = this.customValidation
+    },
     toggleFieldTag: function (tag) {
       const tagIndex = this.fields.selectedTags.indexOf(tag)
       if (tagIndex > -1) {

@@ -41,14 +41,14 @@ export const store = new Vuex.Store({
       state.indexOfSelectedField = index
     },
     saveInputToGroup: function (state) {
-      console.log('heres what i got', state.fields)
-      if (state.fields.displayLabel.length === 0) {
+      if (state.fields.displayLabel === null || state.fields.displayLabel.length === 0) {
         alert('Display Label cannot be empty')
       } else if (state.fields.fieldType === 'select' && (state.fields.options[0].name.length === 0 || state.fields.options[0].value.length === 0)) {
         alert('At least 1 option name and value is required to add this input field to the group')
       } else {
         state.fieldGroups[state.indexOfSelectedFieldGroup].groups.push(state.fields)
       }
+      console.log('Added the input Field', state.fields)
     },
     addInputField: function (state, id) {
       switch (id) {
@@ -90,7 +90,7 @@ export const store = new Vuex.Store({
           state.fields = {
             id: 2,
             fieldType: 'vin',
-            InputType: 'number',
+            inputType: 'number',
             displayLabel: null,
             defaultValue: null,
             customValidation: null,
