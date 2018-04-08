@@ -1,0 +1,33 @@
+<b-container fluid>
+  <section class="main">
+    <h3 class="text-left">Commercial Property - Add Field</h3>
+    <b-card>
+      <table>
+        <tr>
+          <td class="field-types-section">
+            <field-types 
+              v-bind:key="types.length"
+              v-bind:types="types"
+            ></field-types>
+          </td>
+          <td class="field-details-section">
+            <field-details
+              v-bind:fields="fields"
+              v-bind:fieldGroups="fieldGroups"
+            ></field-details>
+          </td>
+        </tr>
+      </table>
+      
+    </b-card>
+    <div class="row bottom-buttons">
+      <div class="col-sm-6 text-left">
+        <b-button v-bind:disabled="indexOfSelectedFieldGroup === null || fields === null" class="text-right theme-button" v-on:click="saveInputToGroup">Save Changes</b-button>
+      </div>
+      <div class="col-sm-6 text-right">
+        <b-button disabled class="text-right light-button">Cancel Changes</b-button>
+        <b-button v-bind:disabled="fields === null" variant="danger" v-on:click="removeInput">Delete Input</b-button>
+      </div>
+    </div>
+  </section>
+</b-container>

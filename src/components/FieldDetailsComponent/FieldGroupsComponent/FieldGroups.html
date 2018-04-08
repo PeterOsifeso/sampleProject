@@ -1,0 +1,45 @@
+<section>
+  <b-modal ref="myModalRef" hide-footer title="Add Field Group">
+    <div class="d-block text-left">
+      <h4>New Field Group</h4>
+      <div>
+        <b-form v-on:submit="addFieldGroup">
+          <b-form-group id="exampleInputGroup1"
+                        label="Enter Name Of Field Group:"
+                        label-for="textInput"
+                        description="Enter the name/category you want to be displayed for your field group.">
+            <b-form-input id="textInput"
+                          type="text"
+                          v-model="fieldGroupName"
+                          required
+                          placeholder="Enter text">
+            </b-form-input>
+          </b-form-group>
+           <b-row>
+            <b-col class="text-center">
+              <b-btn class="mt-3" variant="outline-success" text-center type="submit">Add Field Group</b-btn>        
+            </b-col>
+          </b-row>
+        </b-form>
+      </div>
+
+    </div>
+
+  </b-modal>
+
+  <div>
+    <b-card class="field-groups" title="Field Groups"
+            sub-title="Choose a group for this input">
+        <p class="card-text" v-for="fieldGroup in fieldGroups">
+          <b-card v-bind:class="{'active-card': fieldGroup.id === indexOfSelectedFieldGroup}" 
+                  v-bind:title="fieldGroup.name"
+                  v-on:click="selectFieldGroup(fieldGroup.id)">
+            <span>{{fieldGroup.groups.length + ' other inputs'}}</span>
+          </b-card>
+        </p>
+        <b-button block class="bottom text-center"
+            variant="outline-success"
+            v-on:click="showModal">Add A New Group</b-button>
+    </b-card>
+  </div>
+</section>

@@ -1,0 +1,12 @@
+<b-card class="field-type" 
+        v-bind:class="{'active-card': type.id === indexOfSelectedField}" 
+        v-on:click="selectField(type.id)"> 
+  <p class="card-text">
+    <icon class="colored" v-bind:name="type.icon" v-bind:label="type.definition"></icon>
+    <b>{{type.name}}</b> <br>
+    <b class="colored">Definition</b> <br>
+      <span>{{type.definition}}</span> <br>
+    <b class="colored">Default Display</b> <br>
+      <span>{{type.defaultDisplay}}</span>
+  </p>
+</b-card>

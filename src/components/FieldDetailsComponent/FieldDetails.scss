@@ -1,0 +1,54 @@
+$full-width: 100%;
+$theme-color:  #077f94;
+$height: calc(100vh - 30vh);
+$tag-bg: #edf4f5;
+.input-fields {
+  width: 70%;
+}
+.field-details-table {
+  width: $full-width;
+}
+.field-details {
+  border: 0;
+  height: $height;
+  overflow-y: auto;
+}
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  width: $full-width;
+}
+.form-single-input {
+  width: 44%;
+  margin-right: 2%;
+}
+.form-single-input-option {
+  width: 43%;
+  margin-right: 2%;
+}
+.edit-options {
+  width: $full-width;
+}
+.no-outline {
+  outline: none;
+}
+.tag-spacing {
+  margin-right: 6px;
+}
+.field-group {
+  vertical-align: unset;
+}
+.pointer {
+  cursor: pointer;
+}
+.tag-section {
+  width: $full-width;
+}
+.tag {
+  background: $tag-bg;
+  color: $theme-color;
+}
+.active-tag{
+  background: $theme-color;
+  color: #fff;
+}

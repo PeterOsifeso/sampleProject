@@ -1,0 +1,32 @@
+$theme-color:  #077f94;
+$light-bg: #f8fbfb;
+$height: calc(100vh - 25vh);
+.main {
+  margin-top: 2vh;
+}
+.theme-button {
+  background: $theme-color;
+}
+.light-button {
+  background: $light-bg;
+  color: #000;
+}
+.field-types-section {
+  width: 20%;
+  height: $height;
+  vertical-align: unset;
+}
+.field-details-section {
+  vertical-align: unset;
+  width: 80%;
+}
+.card .card-body {
+  padding: 0;
+  text-align: left;
+  height: 72vh;
+  max-height: $height;
+}
+.bottom-buttons {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

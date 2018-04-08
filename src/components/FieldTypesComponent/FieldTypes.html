@@ -1,0 +1,24 @@
+<b-card class="field-types" title="Field Types"
+        sub-title="">
+    <p class="card-text">
+      <div>
+        <div class="form-group">
+          <label for="filter">Filter Types</label>
+          <input type="text" class="form-control" id="filter" v-on:keyup="doFilter" v-model="keyword">
+        </div>
+      </div>
+      <field-type-card
+      v-if="searchResults.length === 0" 
+      v-for="type in types" 
+      v-bind:key="type.id"
+      v-bind:type="type"
+      ></field-type-card>
+
+      <field-type-card
+      v-if="searchResults.length > 0" 
+      v-for="type in searchResults"  
+      v-bind:key="type.id"
+      v-bind:type="type"
+      ></field-type-card>
+    </p>
+</b-card>

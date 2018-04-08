@@ -1,0 +1,10 @@
+$light-bg: #f8fbfb;
+$full-width: 100%;
+$height: calc(100vh - 30vh);
+.field-types {
+    background: $light-bg;
+    border: 0;
+    width: $full-width;
+    height: $height;
+    overflow-y: auto;
+}

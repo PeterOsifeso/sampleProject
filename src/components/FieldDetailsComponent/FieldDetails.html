@@ -1,0 +1,156 @@
+<section>
+  <div>
+    <b-card class="field-details" title="Field Details"
+            sub-title="">
+        <p class="card-text">
+         <table class="field-details-table">
+           <tr>
+             <td class="input-fields">
+               <span
+               v-if="fields"
+               >
+                <h5>Input Fields</h5>
+                <div>
+                  <b-form class="flex-wrap">
+                    <b-form-group class="form-single-input"
+                                id="label1"
+                                label="Display Label"
+                                label-for="input1"
+                                description="For display purposes, spaces allowed"
+                                >
+                      <b-form-input v-bind:state="checkDisplayLabel" 
+                                    required type="text" 
+                                    class="form-control" 
+                                    id="input1" 
+                                    v-on:keyup.native="generateReferenceName" v-model="fields.displayLabel"></b-form-input>
+                    </b-form-group>
+
+                    <b-form-group class="form-single-input"
+                                id="label2"
+                                label="Default Value"
+                                label-for="input2"
+                                description=""
+                                >
+                      <b-form-input v-bind:type="fields.inputType" class="form-control" id="input2" v-model="fields.defaultValue" v-on:keyup.native="generateOptionValue(fields)"></b-form-input>
+                    </b-form-group>
+
+                    <div  v-if="fields.fieldType === 'select'"
+                          v-for="option in fields.options"  
+                          v-bind:key="option.id"
+                          class="flex-wrap"
+                          >
+                      <b-form-group class="form-single-input-option"
+                                v-bind:id="'label-' + option.id"
+                                label="Option Name"
+                                v-bind:label-for="'input' + option.id"
+                                description="Enter a option the user can select"
+                                >
+                        <b-form-input v-on:keyup.native="generateOptionValue(option)" 
+                                      type="text" class="form-control" 
+                                      v-bind:id="'input' + option.id" 
+                                      v-model="option.name"
+                                      >
+                        </b-form-input>
+                      </b-form-group>
+                      <b-form-group class="form-single-input"
+                            label="Option Value"
+                            v-bind:label-for="'inputvalue' + option.id"
+                            description="Modify or leave as it is"
+                            >
+                        <b-form-input v-if="option === fields.options[0]" 
+                                      disabled type="text" 
+                                      class="form-control"
+                                      v-bind:id="'input' + option.id"
+                                      v-model="fields.defaultValue"
+                                      >
+                        </b-form-input>                        
+                        <b-form-input v-else type="text" 
+                                      class="form-control" 
+                                      v-bind:id="'inputvalue' + option.id" 
+                                      v-model="option.value"
+                                      >
+                        </b-form-input>
+                      </b-form-group>
+
+                      <button v-on:click="addSelectOption(option)" type="button" class="close no-outline" aria-label="Add Option">
+                        <span aria-hidden="true">&plus;</span> &nbsp;
+                      </button>
+                      <button v-if="fields.options.length > 1" v-on:click="removeSelectOption(option)" type="button" class="close no-outline" aria-label="Remove Option">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+
+                    <b-form-group class="form-single-input"
+                                v-if="fields.fieldType !== 'select'"
+                                id="label3"
+                                label="Custom Validation"
+                                label-for="input3"
+                                description="Any regex pattern can be used for custom input validation"
+                                >
+                      <b-form-input v-bind:state="checkRegex"
+                                    type="text" 
+                                    class="form-control" 
+                                    id="input3" 
+                                    v-model="fields.customValidation"
+                                    >
+                      </b-form-input>
+                                
+                    </b-form-group>
+                    <b-form-group class="form-single-input"
+                              id="label4"
+                              label="Reference Name"
+                              label-for="input4"
+                              description="Used to reference in calculations, no spaces allowed"
+                              >
+                      <b-form-input id="input4"
+                                    type="text"
+                                    v-model="fields.referenceName"
+                                    required
+                                    placeholder="">
+                      </b-form-input>
+                    </b-form-group>
+
+                    <section class="tag-section">
+                      <h4>Tags</h4>
+
+                      <table width="100%">
+                        <tr>
+                          <td align="left" width="50%">
+                            <h5>Tag Group</h5>
+                              <b-badge  class="pointer tag-spacing tag" 
+                                        v-bind:key="tagGroup.id" 
+                                        v-bind:class="{'active-tag': tagGroup === selectedTagGroup }"
+                                        v-for="tagGroup in fields.tagGroups" 
+                                        v-on:click="showTags(tagGroup)"
+                                        >{{tagGroup.name}}
+                              </b-badge>
+                          </td>
+                          <td align="left">
+                            <h5>Tags</h5>
+                              <b-badge  class="pointer tag-spacing tag" 
+                                        v-if="selectedTagGroup"
+                                        v-bind:class="{'active-tag': fields.selectedTags.indexOf(tag) > -1} " 
+                                        v-bind:key="tag" 
+                                        v-for="tag in selectedTagGroup.tags" 
+                                        v-on:click="toggleFieldTag(tag)"
+                                        >{{tag}}
+                              </b-badge>                
+                          </td>
+                        </tr>
+                      </table>
+                    </section>
+                  </b-form>
+                </div>
+               </span>
+               
+            </td>
+            <td class="field-group">
+              <field-group v-bind:fieldGroups="fieldGroups"
+              ></field-group>
+            </td>
+          </tr>
+        </table>
+      </p>
+    </b-card>
+  </div>
+</section>

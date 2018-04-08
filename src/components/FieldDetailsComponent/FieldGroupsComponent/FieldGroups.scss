@@ -1,0 +1,16 @@
+$card-padding: 0.5rem;
+$theme-color:  #077f94 ;
+$light-bg: #f8fbfb;
+.card-body {
+  padding: $card-padding;
+}
+.active-card {
+  background: $theme-color;
+  color: white;
+  .colored {
+    color: white;
+  }
+}
+.field-groups {
+  background: $light-bg;
+}
