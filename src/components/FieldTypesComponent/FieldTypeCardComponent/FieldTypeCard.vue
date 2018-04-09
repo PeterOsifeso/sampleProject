@@ -25,9 +25,9 @@ export default {
     ]),
     selectField: function (id) {
       this.$store.commit('selectField', id)
-      this.addType(id)
+      this.addFieldType(id)
     },
-    addType: function (id) {
+    addFieldType: function (id) {
       this.$store.commit('addInputField', id)
     }
   }
