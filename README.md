@@ -17,14 +17,14 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 
-# run unit tests
-npm run unit
+# how it works
+This is just a part of a much bigger project
 
-# run e2e tests
-npm run e2e
+1. Select a field type from the field types section
+2. Fill in the field details accordingly
+3. Click on Sample Group (or add a new group) to add field to the field group.
+4. Save changes button should light up.
+5. Click on save changes to add the field to the selected group.
+6. Done
 
-# run all tests
-npm test
-```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

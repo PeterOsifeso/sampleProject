@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import BootstrapVue from 'bootstrap-vue'
-import router from './router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-awesome/icons'
@@ -15,7 +14,6 @@ Vue.use(BootstrapVue)
 new Vue({
   store,
   el: '#app',
-  router,
   components: { App },
   template: '<App/>'
 })
